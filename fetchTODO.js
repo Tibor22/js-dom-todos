@@ -1,4 +1,3 @@
-import { deleteBtn, completeBtn } from "./app.js";
 const listContainer = document.querySelector("#todo-list");
 
 export function fetchList() {
@@ -7,15 +6,15 @@ export function fetchList() {
     .then((data) => {
       listContainer.innerHTML = "";
       data.forEach((item) => {
-        const li = document.createElement("li");
-        li.innerText = item.title;
-        li.dataset.id = item.id;
+        const html = `<li data-id = '${item.id}'>
+        ${item.title}
+        <input type="submit" value="Complete">
+        <input type="submit" value="Delete">
+      </li>`;
+
+        listContainer.insertAdjacentHTML("beforeend", html);
+        const li = document.querySelector(`[data-id="${item.id}"]`);
         if (item.completed) li.classList.add("completed");
-        if (!item.completed) {
-          li.append(completeBtn());
-        }
-        li.append(deleteBtn());
-        listContainer.append(li);
       });
     });
 }
