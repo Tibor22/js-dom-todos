@@ -13,8 +13,6 @@ export function fetchList() {
       </li>`;
 
         listContainer.insertAdjacentHTML("beforeend", html);
-        const li = document.querySelector(`[data-id="${item.id}"]`);
-        if (item.completed) li.classList.add("completed");
       });
     });
 }

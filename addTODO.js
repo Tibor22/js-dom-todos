@@ -17,8 +17,6 @@ export function addTODO(e) {
     <input type="submit" value="Complete">
     <input type="submit" value="Delete">
   </li>`;
-      const li = document.querySelector(`[data-id="${data.id}"]`);
-      if (data.completed) li.classList.add("completed");
 
       listContainer.insertAdjacentHTML("beforeend", html);
     });

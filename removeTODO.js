@@ -7,8 +7,9 @@ export function deleteTODO(e) {
   const options = {
     method: "DELETE",
   };
-
-  fetch(`http://localhost:3000/todos/${id}`, options).then((res) =>
-    fetchList()
-  );
+  fetch(`http://localhost:3000/todos/${id}`, options)
+    .then((res) => res.json())
+    .then((todo) => {
+      e.target.closest("li").remove();
+    });
 }
